@@ -12,7 +12,7 @@ export default function Home({ blogs }) {
     <h1 className={styles['header']}>Welcome to my blog</h1>
     <p className={styles['subtitle']}>This is a subtitle idk what to type here</p>
     <ul className={styles['blog-list']}>
-      {blogs.map(blog => (
+      {blogs.slice(0).reverse().map(blog => (
         <li key={blog.slug}>
           <Link href={`/blog/${blog.slug}`}>
             {blog.date}:{blog.title}
