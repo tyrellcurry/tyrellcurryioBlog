@@ -13,9 +13,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^6.7.3",
+    "gray-matter": "^4.0.3",
     "next": "^13.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-markdown": "^6.0.3",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1",
+    "style-loader": "^3.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.7",
