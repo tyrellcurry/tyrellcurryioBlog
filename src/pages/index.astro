@@ -1,18 +1,53 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const res = await fetch(
+    "https://public-api.wordpress.com/rest/v1.1/sites/tyrellcurryio.wordpress.com/posts"
+);
+const posts = await res.json();
+console.log(posts);
 ---
 
 <Layout title="TyrellCurry.io Blog">
     <main>
-        <header class="text-center text-4xl font-semibold pt-8 dark:bg-slate-900 dark:text-slate-200">
+        <header
+            class="text-center text-4xl font-semibold pt-8 dark:bg-slate-900 dark:text-slate-200">
             <h1 class="text-6xl pb-4">
                 Welcome to the
-                <span class="text-slate-600 dark:text-slate-400">TyrellCurry.io</span> blog!
+                <span class="text-slate-600 dark:text-slate-400">
+                    TyrellCurry.io
+                </span> blog!
             </h1>
             <p class="pb-2">Built with AstroJS & Tailwind CSS</p>
             <p class="pb-8">Integrating Dev.to API for Blog Posts</p>
-			<button class="rounded-lg p-5 py-2 bg-slate-600 text-slate-200 hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-700 dark:hover:bg-slate-300" onclick="dm()">Darkmode Toggle</button>
+            <button
+                class="rounded-lg p-5 py-2 bg-slate-600 text-slate-200 hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-700 dark:hover:bg-slate-300"
+                onclick="dm()">
+                Darkmode Toggle
+            </button>
         </header>
+        <section
+            class="text-3xl dark:text-slate-200 m-auto w-fit flex flex-col items-center">
+            <h2 class="pb-6 pt-8">Let's render some blog posts!</h2>
+            {
+                posts.posts.map((posts) => {
+                    return (
+                        <div class="pb-4 flex flex-col items-center">
+                            <div class="text-xl pb-2">
+                                <a href={posts.URL} target="_blank">{posts.title}</a>
+                            </div>
+                            <div>
+                                <a href={posts.URL} target="_blank">
+                                    <img
+                                        class="max-w-[400px]"
+                                        src={posts.featured_image}
+                                        alt=""
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </section>
     </main>
-	<script src="../scripts/dm.js"></script>
 </Layout>

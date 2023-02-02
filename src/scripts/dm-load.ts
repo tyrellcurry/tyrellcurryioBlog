@@ -7,3 +7,4 @@ if (
 } else {
     document.documentElement.classList.remove("dark");
 }
+export {};

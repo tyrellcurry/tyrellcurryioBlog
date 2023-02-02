@@ -13,8 +13,9 @@ const { title } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="#" />
         <meta name="generator" content={Astro.generator} />
+		<script src="../scripts/dm-load.ts"></script>
+		<script src="../scripts/dm.ts"></script>
         <title>{title}</title>
-        <script src="../scripts/dm-load.js"></script>
     </head>
     <body class="dark:bg-slate-900">
         <slot />
