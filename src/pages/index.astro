@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="TyrellCurry.io Blog">
+    <main>
+        <header class="text-center text-4xl font-semibold pt-8 dark:bg-slate-900 dark:text-slate-200">
+            <h1 class="text-6xl pb-4">
+                Welcome to the
+                <span class="text-slate-600 dark:text-slate-400">TyrellCurry.io</span> blog!
+            </h1>
+            <p class="pb-2">Built with AstroJS & Tailwind CSS</p>
+            <p class="pb-8">Integrating Dev.to API for Blog Posts</p>
+			<button class="rounded-lg p-5 py-2 bg-slate-600 text-slate-200 hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-700 dark:hover:bg-slate-300" onclick="dm()">Darkmode Toggle</button>
+        </header>
+    </main>
+	<script src="../scripts/dm.js"></script>
+</Layout>
