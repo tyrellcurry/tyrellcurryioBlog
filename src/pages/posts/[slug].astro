@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const { slug } = Astro.params;
+const res = await fetch(
+    `https://public-api.wordpress.com/rest/v1.1/sites/tyrellcurryio.wordpress.com/posts/slug:${slug}`
+);
+let post = await res.json();
+
+// The getStaticPaths() is required for static Astro sites.
+// If using SSR, you will not need this function.
+export async function getStaticPaths() {
+    let data = await fetch(
+        "https://public-api.wordpress.com/rest/v1.1/sites/tyrellcurryio.wordpress.com/posts"
+    );
+    let postsData = await data.json();
+    const posts = postsData.posts;
+
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post: post },
+    }));
+}
+---
+<script>
+    console.log('hello');
+</script>
+<Layout title={post.title}>
+    <article class="dark:text-slate-200">
+        <h1 set:html={post.title} />
+        <Fragment set:html={post.content} />
+    </article>
+</Layout>
