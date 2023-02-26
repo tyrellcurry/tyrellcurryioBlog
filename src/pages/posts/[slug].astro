@@ -21,9 +21,9 @@ export async function getStaticPaths() {
     }));
 }
 ---
-<script>
-    console.log('hello');
-</script>
+<head>
+    <link rel="stylesheet" href="../src/styles/posts.css">
+</head>
 <Layout title={post.title}>
     <article class="dark:text-slate-200">
         <h1 set:html={post.title} />
