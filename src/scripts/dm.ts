@@ -5,4 +5,4 @@ function dm() {
 
 (window as any).dm = dm;
 
-export {};
+export default dm;
