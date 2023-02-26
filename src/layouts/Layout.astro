@@ -4,6 +4,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+import DmToggle from '../components/DmToggle.astro';
 ---
 
 <!DOCTYPE html>
@@ -11,22 +12,33 @@ const { title } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="#" />
         <meta name="generator" content={Astro.generator} />
-		<script src="../scripts/dm-load.ts"></script>
-		<script src="../scripts/dm.ts"></script>
+        <link rel="stylesheet" href="/src/styles/main.css">
+        <script src="../scripts/dm-load.ts"></script>
+        <script src="../scripts/dm.ts"></script>
         <title>{title}</title>
     </head>
     <body class="dark:bg-slate-900">
+        <nav class="bg-slate-500 p-4 py-2 flex justify-between items-center">
+            <div class="logo">
+                <p>Blog</p>
+            </div>
+            <ul class="flex gap-3">
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li>
+                    <a href="">Portfolio</a>
+                </li>
+                <li>
+                    <a href="">Github</a>
+                </li>
+                <li>
+                    <a href="">Linkedin</a>
+                </li>
+            </ul>
+            <DmToggle />
+        </nav>
         <slot />
     </body>
 </html>
-<style>
-    html {
-        font-family: system-ui, sans-serif;
-    }
-    code {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-    }
-</style>
