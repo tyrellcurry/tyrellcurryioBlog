@@ -1,15 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const res = await fetch(
-    "https://public-api.wordpress.com/rest/v1.1/sites/tyrellcurryio.wordpress.com/posts"
-);
-const data = await res.json();
-const posts = data.posts;
+import NewBlogPosts from "../components/NewBlogPosts.astro";
 ---
-
-<script define:vars={{ posts }}>
-    console.log(posts);
-</script>
 <Layout title="TyrellCurry.io Blog">
     <main>
         <header
@@ -21,47 +13,8 @@ const posts = data.posts;
                 </span> blog!
             </h1>
             <p class="pb-2">Built with AstroJS & Tailwind CSS</p>
-            <p class="pb-8">Integrating Dev.to API for Blog Posts</p>
-            <button
-                class="rounded-lg p-5 py-2 bg-slate-600 text-slate-200 hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-700 dark:hover:bg-slate-300"
-                onclick="dm()">
-                Darkmode Toggle
-            </button>
+            <p class="pb-8">Integrating Dev.to API for Blog Posts</p>            
         </header>
-        <section
-            class="text-3xl dark:text-slate-200 m-auto w-fit flex flex-col items-center">
-            <h2 class="pb-6 pt-8">Let's render some blog posts!</h2>
-            {
-                posts.map((posts) => {
-                    return (
-                        <>
-                            <div class="pb-4 flex flex-col items-center">
-                                <div class="text-xl pb-2">
-                                    <a
-                                        href={`/posts/${posts.slug}`}
-                                        set:html="posts.title"
-                                        target="_blank"
-                                    />
-                                </div>
-                                <div>
-                                    <a href={`/posts/${posts.slug}`} target="_blank">
-                                        <img
-                                            class="max-w-[400px]"
-                                            src={posts.featured_image}
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-							<!-- 
-                            <div class="text-sm">
-                                <div set:html="posts.content" />
-                            </div>
-							-->
-                        </>
-                    );
-                })
-            }
-        </section>
+        <NewBlogPosts />
     </main>
 </Layout>

@@ -1,0 +1,47 @@
+---
+const res = await fetch(
+    "https://public-api.wordpress.com/rest/v1.1/sites/tyrellcurryio.wordpress.com/posts"
+);
+const data = await res.json();
+const posts = data.posts;
+---
+
+<section
+    class="text-3xl dark:text-slate-200 m-auto w-fit flex flex-col items-center">
+    <h2 class="pb-6 pt-8">Let's render some blog posts!</h2>
+    {
+        posts.map((posts) => {
+            return (
+                <>
+                    <div class="pb-4 flex flex-col items-center">
+                        <div class="text-xl pb-2">
+                            <a
+                                href={`/posts/${posts.slug}`}
+                                set:html="posts.title"
+                                target="_blank"
+                            />
+                        </div>
+                        <div>
+                            <a href={`/posts/${posts.slug}`} target="_blank">
+                                <img
+                                    class="max-w-[400px]"
+                                    src={posts.featured_image}
+                                    alt=""
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 
+                    <div class="text-sm">
+                        <div set:html="posts.content" />
+                    </div>
+                    -->
+                </>
+            );
+        })
+    }
+</section>
+
+<!-- <script define:vars={{ posts }}>
+    console.log(posts);
+</script> -->
